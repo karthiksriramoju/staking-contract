@@ -34,4 +34,9 @@ contract TestContract is Test {
         assert(c.totalSupply()==5);
     }
 
+    function testFailStakingContract() public {
+        vm.startPrank(0x5d81d157315ed00116098Bee609AcD49ac27D73F);
+        c.updateStakingContract(0x5d81d157315ed00116098Bee609AcD49ac27D73F);
+    }
+
 }
