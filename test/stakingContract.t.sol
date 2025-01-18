@@ -29,14 +29,21 @@ contract TestStakingContract is Test{
     // }
 
     function testUnstake() public {
-         vm.startPrank(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f);
-         vm.deal(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f, 10 ether);
+        vm.startPrank(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f);
+        vm.deal(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f, 10 ether);
         console.log(address(this));
         console.log(address(c));
         c.stake{value: 10 ether}();
         c.unstake(10 ether);
 
         assert(c.totalBalance() == 0);
+    }
+
+    function testFailUnstake() public {
+        vm.startPrank(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f);
+        vm.deal(0x587EFaEe4f308aB2795ca35A27Dff8c1dfAF9e3f, 10 ether);
+        c.stake{value : 10 ether}();
+        c.unstake(20 ether);
     }
 
 
