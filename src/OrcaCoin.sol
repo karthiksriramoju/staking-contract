@@ -6,11 +6,11 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 contract OrcaContract is ERC20, Ownable {
   address stakingContract;
 
-  constructor(address _stakingContract) ERC20("Orca", "ORCA")  Ownable(msg.sender){
+  constructor(address _stakingContract) ERC20("Orca", "ORC")  Ownable(msg.sender){
     stakingContract = _stakingContract;
   }
 
-  function  mint(uint amount , address to) public  {
+  function  mint( address to,uint amount) public  {
     require(msg.sender == stakingContract);
     _mint(to, amount);
   }

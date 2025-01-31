@@ -18,19 +18,19 @@ contract TestContract is Test {
 
     function testMint() public{
         vm.startPrank(0x3bA161808C90b334C5a0c45c846f402dcd32338D);
-        c.mint(5, 0x5d81d157315ed00116098Bee609AcD49ac27D73F);
+        c.mint(0x5d81d157315ed00116098Bee609AcD49ac27D73F,5);
         assert(c.totalSupply()==5);
     }
 
     function testFailMinting() public {
-        c.mint(5, 0x5d81d157315ed00116098Bee609AcD49ac27D73F);
+        c.mint( 0x5d81d157315ed00116098Bee609AcD49ac27D73F,5);
         assert(c.totalSupply()==5);
     }
 
     function testUpdateStakingContract() public {
         c.updateStakingContract(0x5d81d157315ed00116098Bee609AcD49ac27D73F);
         vm.startPrank(0x5d81d157315ed00116098Bee609AcD49ac27D73F);
-        c.mint(5, 0x3bA161808C90b334C5a0c45c846f402dcd32338D);
+        c.mint( 0x3bA161808C90b334C5a0c45c846f402dcd32338D,5);
         assert(c.totalSupply()==5);
     }
 
